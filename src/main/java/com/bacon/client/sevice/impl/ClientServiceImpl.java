@@ -9,6 +9,8 @@ import com.bacon.client.pojo.ReturnBack;
 import com.bacon.client.sevice.ClientService;
 import com.bacon.client.task.*;
 import com.bacon.client.task.callable.FileUploadCallableTask;
+import com.bacon.client.task.httpTasks.HttpGetAliveTask;
+import com.bacon.client.task.httpTasks.HttpReturnBackTask;
 import com.bacon.client.utils.AsyncTaskUtils;
 import com.bacon.client.utils.JsonHandleUtils;
 import org.apache.log4j.Logger;
@@ -34,7 +36,7 @@ public class ClientServiceImpl implements ClientService.Iface{
         if (type==RequestType.OFFLINE_DATA_UPLOAD)
         {
 //            FileUploadTask fileUploadTask = new FileUploadTask(2,parameterBean);
-            FileUploadCallableTask fileUploadCallableTask = new FileUploadCallableTask(2,parameterBean);
+            FileUploadCallableTask fileUploadCallableTask = new FileUploadCallableTask(webRequest.getTaskId(),parameterBean);
             logger.info("\nTurn to File Upload task executor");
             FutureTask<ReturnBack> futureTask = new FutureTask<ReturnBack>(fileUploadCallableTask){
                 //异步任务执行完成，进行回调
@@ -47,6 +49,9 @@ public class ClientServiceImpl implements ClientService.Iface{
 //                        System.out.println("future.get(): " + get());
                         returnBack = get();
                         logger.info("TaskId: " + returnBack.getTaskId() + "    Info: " + returnBack.getReturnInfo());
+                        HttpReturnBackTask httpReturnBackTask = new HttpReturnBackTask(returnBack);
+                        AsyncTaskUtils.INSTANCE.dispatchNormalTask(httpReturnBackTask);
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -57,10 +62,6 @@ public class ClientServiceImpl implements ClientService.Iface{
             AsyncTaskUtils.INSTANCE.dispatchNormalTask(futureTask);
             logger.info("\nExecuting future task...");
 
-        }else if (type==RequestType.STREAM_DATA_UPLOAD)
-        {
-            AsyncTaskUtils.INSTANCE.dispatchNormalTask(new StreamdataUploadTask());
-            logger.info("\nTurn to StreamData Upload task executor");
         }else if (type==RequestType.DATABASE_DATA_UPLOAD)
         {
             AsyncTaskUtils.INSTANCE.dispatchNormalTask(new DatabaseUploadTask());

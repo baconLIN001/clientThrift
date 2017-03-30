@@ -56,6 +56,7 @@ public class App2Test {
         parameter.setTopic("test");
         String parameterJson = JsonHandleUtils.parameterBeanToJson(parameter);
         WebRequest request = new WebRequest().setRequestType(RequestType.OFFLINE_DATA_UPLOAD)
+                .setTaskId(2)
                 .setParameter(parameterJson);
 
         try{

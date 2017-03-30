@@ -13,11 +13,10 @@ import org.apache.thrift.TEnum;
 
 public enum RequestType implements TEnum {
   OFFLINE_DATA_UPLOAD(0),
-  STREAM_DATA_UPLOAD(1),
-  DATABASE_DATA_UPLOAD(2),
-  FILELIST_VIEW(3),
-  OFFline_File_PREIVEW(4),
-  GET_LIVE_CLIENTS(5);
+  DATABASE_DATA_UPLOAD(1),
+  FILELIST_VIEW(2),
+  OFFline_File_PREIVEW(3),
+  GET_LIVE_CLIENTS(4);
 
   private final int value;
 
@@ -41,14 +40,12 @@ public enum RequestType implements TEnum {
       case 0:
         return OFFLINE_DATA_UPLOAD;
       case 1:
-        return STREAM_DATA_UPLOAD;
-      case 2:
         return DATABASE_DATA_UPLOAD;
-      case 3:
+      case 2:
         return FILELIST_VIEW;
-      case 4:
+      case 3:
         return OFFline_File_PREIVEW;
-      case 5:
+      case 4:
         return GET_LIVE_CLIENTS;
       default:
         return null;

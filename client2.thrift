@@ -1,4 +1,4 @@
-namespace java com.bacon.client2
+namespace java com.bacon.client
 
 enum RequestType{
     OFFLINE_DATA_UPLOAD,    //离线数据
@@ -10,13 +10,8 @@ enum RequestType{
 
 struct WebRequest{
     1:required RequestType requestType;     //请求的数据类型, 必选
-    2:required string parameter;                 //功能参数的json
-    //3:required i32 securityLevel;           //安全等级，必选
-    //4:optional string originStr;            //若用户选择上传整个string，使用默认的field OriginStr
-    //5:optional string regex;
-    //6:optional list<string> filedNameSplited;
-    //7:optional list<string> filedNameAES;
-    //8:optional string AESPriKey;
+    2:required i32 taskId;                  //请求的task的ID
+    3:required string parameter;                 //功能参数的json
 }
 
 exception RequestException{

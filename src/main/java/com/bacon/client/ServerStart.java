@@ -1,6 +1,8 @@
 package com.bacon.client;
 
+import com.bacon.client.task.httpTasks.HttpGetAliveTask;
 import com.bacon.client.thrift.RequestReceiver;
+import com.bacon.client.utils.AsyncTaskUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -14,5 +16,8 @@ public class ServerStart {
         RequestReceiver requestReceiver = RequestReceiver.getInstance();
         requestReceiver.initReceiver();
         logger.info("Start Server!");
+
+        HttpGetAliveTask httpGetAliveTask = new HttpGetAliveTask();
+        AsyncTaskUtils.INSTANCE.dispatchNormalTask(httpGetAliveTask);
     }
 }

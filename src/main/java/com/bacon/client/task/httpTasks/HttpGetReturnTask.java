@@ -20,7 +20,6 @@ public class HttpGetReturnTask implements Runnable{
     private ReturnBack returnBackInfo;
 
 
-
     @Override
     public void run() {
         Properties properties = new Properties();
@@ -37,7 +36,12 @@ public class HttpGetReturnTask implements Runnable{
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
+            StringBuffer result = new StringBuffer();
+            String line = null;
+            while ((line=bufferedReader.readLine())!=null){
+                result.append(line);
+            }
+            System.out.println(result.toString());
         }catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

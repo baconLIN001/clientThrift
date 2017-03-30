@@ -4,6 +4,7 @@ import com.b3434.Factory.ProcessorFactory;
 import com.b3434.Processor.Processor;
 import com.bacon.client.pojo.Parameter;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.Scanner;
@@ -13,6 +14,7 @@ import java.util.Scanner;
  */
 public class FileUtils {
 
+    Logger logger = Logger.getLogger(FileUtils.class);
     /**
      * 调用数据处理器，将文件转化成avro
      * @param parameter
