@@ -2123,3 +2123,7 @@ filename: json.txt
 [INFO] [2017-03-30 16:07:26][com.bacon.client.sevice.ClientService]TaskId: 2    Info: Success
 [INFO] [2017-03-30 16:07:26][com.bacon.client.task.httpTasks.HttpReturnBackTask]send task complete url: http://125.216.243.41:8888/taskcomplete
 [INFO] [2017-03-30 16:07:26][com.bacon.client.task.httpTasks.HttpReturnBackTask]after send task complete meg, response: null
+[INFO] [2017-03-30 16:11:59][com.bacon.client.task.httpTasks.HttpGetAliveTask]send get alive request: http://125.216.243.41:8888/getalive
+[INFO] [2017-03-30 16:11:59][com.bacon.client.task.httpTasks.HttpGetAliveTask]get alive response: {"code":0,"datas":{"alivelist":{"125.216.243.200_8080":1490861530872}}}
+[INFO] [2017-03-30 16:21:59][com.bacon.client.task.httpTasks.HttpGetAliveTask]send get alive request: http://125.216.243.41:8888/getalive
+[INFO] [2017-03-30 16:21:59][com.bacon.client.task.httpTasks.HttpGetAliveTask]get alive response: {"code":0,"datas":{"alivelist":{"125.216.243.200_8080":1490862130953}}}
