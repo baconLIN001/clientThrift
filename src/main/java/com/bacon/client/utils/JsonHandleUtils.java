@@ -3,6 +3,7 @@ package com.bacon.client.utils;
 import com.alibaba.fastjson.JSON;
 import com.bacon.client.pojo.JsonRootBean;
 import com.bacon.client.pojo.Parameter;
+import com.bacon.client.pojo.ReturnBack;
 
 import java.util.List;
 
@@ -68,5 +69,17 @@ public class JsonHandleUtils<E> {
     {
         String jsonString = JSON.toJSONString(list);
         return jsonString;
+    }
+
+    public static String returnBackBeanToJson(ReturnBack returnBack)
+    {
+        String returnBackStr = JSON.toJSONString(returnBack);
+        return returnBackStr;
+    }
+
+    public static ReturnBack jsonToReturnBack(String returnBackJson)
+    {
+        ReturnBack returnBackBean = JSON.parseObject(returnBackJson, ReturnBack.class);
+        return returnBackBean;
     }
 }

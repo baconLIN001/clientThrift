@@ -50,15 +50,16 @@ public class App {
         }
 
         Parameter parameter = new Parameter();
-        parameter.setPath("G:\\大三下\\Message Systems\\文档\\json2.txt");
-        parameter.setAesprikey("123456");
-        parameter.setSecuritylevel(2);
+        parameter.setPath("G:\\大三下\\Message Systems\\文档\\test.txt");
+        parameter.setAESPriKey("123456");
+        parameter.setSecurityLevel(2);
         parameter.setTopic("test");
+        parameter.setIsAllString(true);
         String parameterJson = JsonHandleUtils.parameterBeanToJson(parameter);
+        System.out.println(parameterJson);
         WebRequest request = new WebRequest().setRequestType(RequestType.OFFLINE_DATA_UPLOAD)
                 .setTaskId(2)
                 .setParameter(parameterJson);
-
         try{
             String result = client.receive(request);
             logger.info(result);

@@ -1,5 +1,6 @@
 package com.bacon.client.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -19,10 +20,11 @@ import java.net.URLDecoder;
 public class HttpUtils {
     Logger logger = Logger.getLogger(HttpUtils.class);
 
-    public static String httpPost(String url, Object param)
+    public static String httpPost(String url, String param)
     {
         DefaultHttpClient httpClient = new DefaultHttpClient();
         String result = null;
+        JSONObject jsonResult = null;
         HttpPost method = new HttpPost(url);
         try{
             if (null!=param)
@@ -38,11 +40,12 @@ public class HttpUtils {
                 try {
                     str = EntityUtils.toString(response.getEntity());
                     result = str;
+//                    jsonResult = JSONObject.fromObject(str);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }else {
-                System.out.println("请求提交失败"+url);
+                System.out.println("请求提交失败"+url+"\n返回码: " + response.getStatusLine().getStatusCode());
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();

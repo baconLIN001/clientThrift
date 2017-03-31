@@ -15,189 +15,225 @@ public class Parameter {
 
     private String path;
     private String topic;
-    @JsonProperty("isAllString")
-    private boolean isallstring;
-    @JsonProperty("originStr")
-    private String originstr;
-    @JsonProperty("isWholeDb")
-    private boolean iswholedb;
-    @JsonProperty("dbName")
-    private String dbname;
-    @JsonProperty("isWholeTable")
-    private boolean iswholetable;
-    @JsonProperty("tableName")
-    private String tablename;
-    @JsonProperty("isPart")
-    private boolean ispart;
-    @JsonProperty("whiteList")
-    private List<String> whitelist;
-    @JsonProperty("blackList")
-    private List<String> blacklist;
-    @JsonProperty("isSplited")
-    private boolean issplited;
-    @JsonProperty("splitSymbol")
-    private String splitsymbol;
-    @JsonProperty("filedNameSplitedList")
-    private List<String> filednamesplitedlist;
-    @JsonProperty("isRegexed")
-    private boolean isregexed;
-    @JsonProperty("filedName")
-    private List<String> filedname;
-    @JsonProperty("fieldRegex")
-    private List<String> fieldregex;
-    @JsonProperty("isEncrypted")
-    private boolean isencrypted;
-    @JsonProperty("AESPriKey")
-    private String aesprikey;
-    @JsonProperty("filedNameEncryptedList")
-    private List<String> filednameencryptedlist;
-    @JsonProperty("securityLevel")
-    private int securitylevel;
-    public void setPath(String path) {
-         this.path = path;
-     }
-     public String getPath() {
-         return path;
-     }
+    private boolean isAllString;
+    private boolean isWholeDb;
+    private String dbName;
+    private boolean isWholeTable;
+    private String tableName;
+    private boolean isPart;
+    private List<String> whiteList;
+    private List<String> blackList;
+    private boolean isSplited;
+    private String splitSymbol;
+    private List<String> filedNameSplitedList;
+    private boolean isRegexed;
+    private List<String> filedNameRegexed;
+    private List<String> fieldRegex;
+    private boolean isEncrypted;
+    private String AESPriKey;
+    private List<String> filedNameEncryptedList;
+    private int securityLevel;
 
-    public void setTopic(String topic) {
-         this.topic = topic;
-     }
-     public String getTopic() {
-         return topic;
-     }
+    public Parameter() {}
 
-    public void setIsallstring(boolean isallstring) {
-         this.isallstring = isallstring;
-     }
-     public boolean getIsallstring() {
-         return isallstring;
-     }
+    public void setPath(String path)
+    {
+        this.path = path;
+    }
 
-    public void setOriginstr(String originstr) {
-         this.originstr = originstr;
-     }
-     public String getOriginstr() {
-         return originstr;
-     }
+    public String getPath()
+    {
+        return this.path;
+    }
 
-    public void setIswholedb(boolean iswholedb) {
-         this.iswholedb = iswholedb;
-     }
-     public boolean getIswholedb() {
-         return iswholedb;
-     }
+    public void setTopic(String topic)
+    {
+        this.topic = topic;
+    }
 
-    public void setDbname(String dbname) {
-         this.dbname = dbname;
-     }
-     public String getDbname() {
-         return dbname;
-     }
+    public String getTopic()
+    {
+        return this.topic;
+    }
 
-    public void setIswholetable(boolean iswholetable) {
-         this.iswholetable = iswholetable;
-     }
-     public boolean getIswholetable() {
-         return iswholetable;
-     }
+    public void setIsAllString(boolean isAllString)
+    {
+        this.isAllString = isAllString;
+    }
 
-    public void setTablename(String tablename) {
-         this.tablename = tablename;
-     }
-     public String getTablename() {
-         return tablename;
-     }
+    public boolean getIsAllString()
+    {
+        return this.isAllString;
+    }
 
-    public void setIspart(boolean ispart) {
-         this.ispart = ispart;
-     }
-     public boolean getIspart() {
-         return ispart;
-     }
+    public void setIsWholeDb(boolean isWholeDb)
+    {
+        this.isWholeDb = isWholeDb;
+    }
 
-    public void setWhitelist(List<String> whitelist) {
-         this.whitelist = whitelist;
-     }
-     public List<String> getWhitelist() {
-         return whitelist;
-     }
+    public boolean getIsWholeDb()
+    {
+        return this.isWholeDb;
+    }
 
-    public void setBlacklist(List<String> blacklist) {
-         this.blacklist = blacklist;
-     }
-     public List<String> getBlacklist() {
-         return blacklist;
-     }
+    public void setDbName(String dbName)
+    {
+        this.dbName = dbName;
+    }
 
-    public void setIssplited(boolean issplited) {
-         this.issplited = issplited;
-     }
-     public boolean getIssplited() {
-         return issplited;
-     }
+    public String getDbName()
+    {
+        return this.dbName;
+    }
 
-    public void setSplitsymbol(String splitsymbol) {
-         this.splitsymbol = splitsymbol;
-     }
-     public String getSplitsymbol() {
-         return splitsymbol;
-     }
+    public void setIsWholeTable(boolean isWholeTable)
+    {
+        this.isWholeTable = isWholeTable;
+    }
 
-    public void setFilednamesplitedlist(List<String> filednamesplitedlist) {
-         this.filednamesplitedlist = filednamesplitedlist;
-     }
-     public List<String> getFilednamesplitedlist() {
-         return filednamesplitedlist;
-     }
+    public boolean getIsWholeTable()
+    {
+        return this.isWholeTable;
+    }
 
-    public void setIsregexed(boolean isregexed) {
-         this.isregexed = isregexed;
-     }
-     public boolean getIsregexed() {
-         return isregexed;
-     }
+    public void setTableName(String tableName)
+    {
+        this.tableName = tableName;
+    }
 
-    public void setFiledname(List<String> filedname) {
-         this.filedname = filedname;
-     }
-     public List<String> getFiledname() {
-         return filedname;
-     }
+    public String getTableName()
+    {
+        return this.tableName;
+    }
 
-    public void setFieldregex(List<String> fieldregex) {
-         this.fieldregex = fieldregex;
-     }
-     public List<String> getFieldregex() {
-         return fieldregex;
-     }
+    public void setIsPart(boolean isPart)
+    {
+        this.isPart = isPart;
+    }
 
-    public void setIsencrypted(boolean isencrypted) {
-         this.isencrypted = isencrypted;
-     }
-     public boolean getIsencrypted() {
-         return isencrypted;
-     }
+    public boolean getIsPart()
+    {
+        return this.isPart;
+    }
 
-    public void setAesprikey(String aesprikey) {
-         this.aesprikey = aesprikey;
-     }
-     public String getAesprikey() {
-         return aesprikey;
-     }
+    public void setWhiteList(List<String> whiteList)
+    {
+        this.whiteList = whiteList;
+    }
 
-    public void setFilednameencryptedlist(List<String> filednameencryptedlist) {
-         this.filednameencryptedlist = filednameencryptedlist;
-     }
-     public List<String> getFilednameencryptedlist() {
-         return filednameencryptedlist;
-     }
+    public List<String> getWhiteList()
+    {
+        return this.whiteList;
+    }
 
-    public void setSecuritylevel(int securitylevel) {
-         this.securitylevel = securitylevel;
-     }
-     public int getSecuritylevel() {
-         return securitylevel;
-     }
+    public void setBlackList(List<String> blackList)
+    {
+        this.blackList = blackList;
+    }
+
+    public List<String> getBlackList()
+    {
+        return this.blackList;
+    }
+
+    public void setIsSplited(boolean isSplited)
+    {
+        this.isSplited = isSplited;
+    }
+
+    public boolean getIsSplited()
+    {
+        return this.isSplited;
+    }
+
+    public void setSplitSymbol(String splitSymbol)
+    {
+        this.splitSymbol = splitSymbol;
+    }
+
+    public String getSplitSymbol()
+    {
+        return this.splitSymbol;
+    }
+
+    public void setFiledNameSplitedList(List<String> filedNameSplitedList)
+    {
+        this.filedNameSplitedList = filedNameSplitedList;
+    }
+
+    public List<String> getFiledNameSplitedList()
+    {
+        return this.filedNameSplitedList;
+    }
+
+    public void setIsRegexed(boolean isRegexed)
+    {
+        this.isRegexed = isRegexed;
+    }
+
+    public boolean getIsRegexed()
+    {
+        return this.isRegexed;
+    }
+
+    public void setFiledNameRegexed(List<String> filedNameRegexed)
+    {
+        this.filedNameRegexed = filedNameRegexed;
+    }
+
+    public List<String> getFiledNameRegexed()
+    {
+        return this.filedNameRegexed;
+    }
+
+    public void setFieldRegex(List<String> fieldRegex)
+    {
+        this.fieldRegex = fieldRegex;
+    }
+
+    public List<String> getFieldRegex()
+    {
+        return this.fieldRegex;
+    }
+
+    public void setIsEncrypted(boolean isEncrypted)
+    {
+        this.isEncrypted = isEncrypted;
+    }
+
+    public boolean getIsEncrypted()
+    {
+        return this.isEncrypted;
+    }
+
+    public void setAESPriKey(String AESPriKey)
+    {
+        this.AESPriKey = AESPriKey;
+    }
+
+    public String getAESPriKey()
+    {
+        return this.AESPriKey;
+    }
+
+    public void setFiledNameEncryptedList(List<String> filedNameEncryptedList)
+    {
+        this.filedNameEncryptedList = filedNameEncryptedList;
+    }
+
+    public List<String> getFiledNameEncryptedList()
+    {
+        return this.filedNameEncryptedList;
+    }
+
+    public void setSecurityLevel(int securityLevel)
+    {
+        this.securityLevel = securityLevel;
+    }
+
+    public int getSecurityLevel()
+    {
+        return this.securityLevel;
+    }
 
 }

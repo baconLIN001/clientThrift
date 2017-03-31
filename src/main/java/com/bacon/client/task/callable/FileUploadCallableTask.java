@@ -54,11 +54,11 @@ public class FileUploadCallableTask implements Callable {
         logger.info("\nfilename: " + filename);
 
 //        bufferReadFile(parameter,path);
-        FileUtils.scannerReadFile(parameter,path);
+        String result = FileUtils.scannerReadFile(parameter,path);
 
         logger.info("Task " + taskId + " work completely");
+        returnBack.setReturnInfo(result);
         returnBack.setTaskId(taskId);
-        returnBack.setReturnInfo("Success");
         return returnBack;
     }
 }

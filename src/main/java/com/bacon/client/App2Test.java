@@ -51,8 +51,8 @@ public class App2Test {
 
         Parameter parameter = new Parameter();
         parameter.setPath("G:\\大三下\\Message Systems\\文档\\json.txt");
-        parameter.setAesprikey("123456");
-        parameter.setSecuritylevel(2);
+        parameter.setAESPriKey("123456");
+        parameter.setSecurityLevel(2);
         parameter.setTopic("test");
         String parameterJson = JsonHandleUtils.parameterBeanToJson(parameter);
         WebRequest request = new WebRequest().setRequestType(RequestType.OFFLINE_DATA_UPLOAD)

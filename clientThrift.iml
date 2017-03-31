@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Processor-1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.json-lib:json-lib:2.4" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.0" level="project" />
@@ -51,9 +52,9 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.4" level="project" />
     <orderEntry type="library" name="Maven: io.confluent:common-config:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.confluent:common-utils:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:dns-cache-manipulator:1.5.0" level="project" />
     <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.1.41" level="project" />
-    <orderEntry type="library" name="Processor-1.0" level="project" />
   </component>
 </module>
