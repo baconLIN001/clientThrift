@@ -2,6 +2,7 @@ package com.bacon.client.task.httpTasks;
 
 import com.bacon.client.pojo.ReturnBack;
 import com.bacon.client.utils.HttpUtils;
+import com.bacon.client.utils.JsonHandleUtils;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -43,7 +44,8 @@ public class HttpReturnBackTask implements Runnable {
         }
         String app_url = properties.getProperty("app_complete_url");
         logger.info("send task complete url: " + app_url);
-        String response = HttpUtils.httpPost(app_url,returnBackInfo.getTaskId());
+        String returnBackJsonStr = JsonHandleUtils.returnBackBeanToJson(returnBackInfo);
+        String response = HttpUtils.httpPost(app_url,returnBackJsonStr);
         logger.info("after send task complete meg, response: "+response);
 //        try {
 //            URL url = new URL(app_url);
