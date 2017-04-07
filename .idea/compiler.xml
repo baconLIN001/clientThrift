@@ -22,10 +22,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="clientThrift" />
+        <module name="clientApi" />
+        <module name="clientCommon" />
+        <module name="clientCore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="clientApi" target="1.7" />
+      <module name="clientCommon" target="1.7" />
+      <module name="clientCore" target="1.7" />
       <module name="clientThrift" target="1.7" />
     </bytecodeTargetLevel>
   </component>
