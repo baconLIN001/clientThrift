@@ -1,5 +1,6 @@
 package com.bacon.client.api.pojo;
 
+import com.bacon.client.common.entity.RequestType;
 import org.apache.avro.Schema;
 
 import java.util.List;
@@ -7,16 +8,17 @@ import java.util.List;
 /**
  * Created by bacon on 2017/4/5.
  */
-public class RequestReturnBack {
+public class RequestReturnBack<T> {
+
+    private String requestType;//请求类型
     private Integer taskId;
-    private String md5;
-    private List<String> md5List;
-    private String schema;
-    private boolean isFolder;
-    private List<String> fileList;
+
+    private int multi;//是否多表或多文件
+    private T returnInfo;//
+    private List<T> returnInfoList;
+
+    //file的返回属性
     private long totalSize;
-    private List<Integer> fileSize;
-    private String Type;
 
     public RequestReturnBack(){
 
@@ -30,38 +32,6 @@ public class RequestReturnBack {
         this.taskId = taskId;
     }
 
-    public String getMd5() {
-        return md5;
-    }
-
-    public void setMd5(String md5) {
-        this.md5 = md5;
-    }
-
-    public String getSchema() {
-        return schema;
-    }
-
-    public void setSchema(String schema) {
-        this.schema = schema;
-    }
-
-    public boolean isFolder() {
-        return isFolder;
-    }
-
-    public void setFolder(boolean isFolder) {
-        this.isFolder = isFolder;
-    }
-
-    public List<String> getFileList() {
-        return fileList;
-    }
-
-    public void setFileList(List<String> fileList) {
-        this.fileList = fileList;
-    }
-
     public long getTotalSize() {
         return totalSize;
     }
@@ -70,27 +40,36 @@ public class RequestReturnBack {
         this.totalSize = totalSize;
     }
 
-    public List<Integer> getFileSize() {
-        return fileSize;
+    public String getRequestType() {
+        return requestType;
     }
 
-    public void setFileSize(List<Integer> fileSize) {
-        this.fileSize = fileSize;
+    public void setRequestType(String requestType) {
+        this.requestType = requestType;
     }
 
-    public String getType() {
-        return Type;
+    public T getReturnInfo() {
+        return returnInfo;
     }
 
-    public void setType(String type) {
-        Type = type;
+    public RequestReturnBack setReturnInfo(T returnInfo) {
+        this.returnInfo = returnInfo;
+        return this;
     }
 
-    public List<String> getMd5List() {
-        return md5List;
+    public int getMulti() {
+        return multi;
     }
 
-    public void setMd5List(List<String> md5List) {
-        this.md5List = md5List;
+    public void setMulti(int multi) {
+        this.multi = multi;
+    }
+
+    public List<T> getReturnInfoList() {
+        return returnInfoList;
+    }
+
+    public void setReturnInfoList(List<T> returnInfoList) {
+        this.returnInfoList = returnInfoList;
     }
 }

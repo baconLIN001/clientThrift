@@ -1,5 +1,6 @@
 package com.bacon.client.core.callable;
 
+import com.bacon.client.common.entity.OfflineParam;
 import com.bacon.client.common.entity.Parameter;
 import com.bacon.client.common.util.AsyncTaskUtils;
 import com.bacon.client.common.util.FileUtils;
@@ -23,11 +24,20 @@ public class FileListUploadCallableTask implements Callable<List<CompleteReturnB
     private List<String> filesList;
     private Parameter parameter;
     private Integer taskId;
+    private OfflineParam offlineParam;
+    private String topic;
 
     public FileListUploadCallableTask(List<String> filesList, Parameter parameter, Integer taskId) {
         this.filesList = filesList;
         this.parameter = parameter;
         this.taskId = taskId;
+    }
+
+    public FileListUploadCallableTask(List<String> filesList, OfflineParam offlineParam, Integer taskId, String topic){
+        this.filesList = filesList;
+        this.offlineParam = offlineParam;
+        this.taskId = taskId;
+        this.topic = topic;
     }
 
     @Override
@@ -36,11 +46,12 @@ public class FileListUploadCallableTask implements Callable<List<CompleteReturnB
         FileUtils.sortFileList(filesList,true);
         List<FutureTask<CompleteReturnBack>> taskList = new ArrayList<FutureTask<CompleteReturnBack>>();
         List<CompleteReturnBack> completeReturnBackList = new ArrayList<>();
+
         //对每个path创建一个异步线程，并交由线程池运行
         for (int i=0;i<filesList.size();i++)
         {
             FutureTask<CompleteReturnBack> futureTask = new FutureTask<CompleteReturnBack>(
-                    new FileUploadCallableTask(taskId,parameter,filesList.get(i)));
+                    new FileUploadCallableTask(taskId,topic,offlineParam,filesList.get(i)));
             taskList.add(futureTask);
             AsyncTaskUtils.INSTANCE.dispatchNormalTask(futureTask);
         }

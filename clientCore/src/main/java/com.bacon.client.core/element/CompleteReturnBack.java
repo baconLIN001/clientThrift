@@ -1,5 +1,6 @@
 package com.bacon.client.core.element;
 
+import com.bacon.client.core.base.DbUploadCode;
 import com.bacon.client.core.base.FileUploadCode;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class CompleteReturnBack {
     private Integer taskId;
     private String path;
     private FileUploadCode fileUploadCode;
+    private DbUploadCode dbUploadCode;
     private String returnInfo;
     private List<String> errorPaths;
 
@@ -59,5 +61,13 @@ public class CompleteReturnBack {
 
     public void setErrorPaths(List<String> errorPaths) {
         this.errorPaths = errorPaths;
+    }
+
+    public DbUploadCode getDbUploadCode() {
+        return dbUploadCode;
+    }
+
+    public void setDbUploadCode(DbUploadCode dbUploadCode) {
+        this.dbUploadCode = dbUploadCode;
     }
 }

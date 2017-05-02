@@ -28,6 +28,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="client" target="1.7" />
       <module name="clientApi" target="1.7" />
       <module name="clientCommon" target="1.7" />
       <module name="clientCore" target="1.7" />

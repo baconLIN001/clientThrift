@@ -31,10 +31,10 @@ public class FileUploadTask implements Runnable{
 
 //        System.out.println("the info : " + info);
         logger.info("The parameter: " + JSON.toJSONString(parameter));
-        String path = parameter.getPath();
-        File file = new File(path);
-        String filename = file.getName();
-        logger.info("\nfilename: " + filename);
+//        String path = parameter.getPath();
+//        File file = new File(path);
+//        String filename = file.getName();
+//        logger.info("\nfilename: " + filename);
 
     }
 

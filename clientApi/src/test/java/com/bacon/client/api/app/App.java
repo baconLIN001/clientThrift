@@ -2,6 +2,7 @@ package com.bacon.client.api.app;
 
 import com.alibaba.fastjson.JSON;
 import com.bacon.client.api.pojo.RequestReturnBack;
+import com.bacon.client.common.entity.OfflineParam;
 import com.bacon.client.common.entity.Parameter;
 import com.bacon.client.common.entity.RequestType;
 import com.bacon.client.common.entity.WebRequest;
@@ -51,20 +52,21 @@ public class App {
         }
 
         Parameter parameter = new Parameter();
-        parameter.setPath("G:\\大三下\\Message Systems\\文档\\test");
-        parameter.setAESPriKey("1234567821676878");
-        parameter.setSecurityLevel(2);
-        parameter.setTopic("test");
-        parameter.setIsAllString(true);
+        OfflineParam offlineParam = new OfflineParam();
+        offlineParam.setPath("G:\\Work\\Message Systems\\Doc\\test");
+        offlineParam.setAESPriKey("1234567821676878");
+        offlineParam.setSecurityLevel(2);
+        offlineParam.setTopic("test2");
+        offlineParam.setIsAllString(0);
+        parameter.setParam(offlineParam);
         String parameterJson = JSON.toJSONString(parameter);
         System.out.println(parameterJson);
         WebRequest request = new WebRequest().setRequestType(RequestType.OFFLINE_DATA_UPLOAD)
-                .setTaskId(2)
+                .setTaskId(5)
                 .setParameter(parameterJson);
         try{
             String result = client.receive(request);
             RequestReturnBack requestReturnBack = JSON.parseObject(result,RequestReturnBack.class);
-            System.out.println("the scama: " + requestReturnBack.getSchema());
             logger.info(result);
         } catch (RequestException e) {
             e.printStackTrace();
