@@ -11,6 +11,7 @@ import java.util.List;
 public class CompleteReturnBack {
     private Integer taskId;
     private String path;
+    private String type;
     private FileUploadCode fileUploadCode;
     private DbUploadCode dbUploadCode;
     private String returnInfo;
@@ -69,5 +70,13 @@ public class CompleteReturnBack {
 
     public void setDbUploadCode(DbUploadCode dbUploadCode) {
         this.dbUploadCode = dbUploadCode;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

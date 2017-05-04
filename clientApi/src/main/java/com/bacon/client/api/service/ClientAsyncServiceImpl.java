@@ -34,11 +34,11 @@ import java.util.concurrent.FutureTask;
 /**
  * Created by bacon on 2017/4/24.
  */
-public class ClientAsyncServiceImpl implements ClientService.AsyncIface {
+public class ClientAsyncServiceImpl implements ClientService.Iface {
     Logger logger = LoggerFactory.getLogger(ClientAsyncServiceImpl.class);
 
     @Override
-    public void receive(WebRequest webRequest, AsyncMethodCallback resultHandler) throws TException {
+    public String receive(WebRequest webRequest) throws TException {
 
         logger.info("WebRequest:"+webRequest.toString());
 
@@ -63,23 +63,31 @@ public class ClientAsyncServiceImpl implements ClientService.AsyncIface {
 
             case DATABASE_DATA_UPLOAD:
                 System.out.println("Here is database upload task...");
-                Parameter<RelationParam> param = JSON.parseObject(webRequest.parameter, new TypeReference<Parameter<RelationParam>>(){});
-                RelationParam dbParam = (RelationParam) param.getParam();
-                String url = dbParam.getDbName();
-                String username = dbParam.getUsername();
-                String password = dbParam.getPassword();
-                if (dbParam.getIsWholeDb()==0){
-                    DbHandler.getAllDbData(DbConstant.MYSQL, dbParam);
-                }else{
-                    String tablename = dbParam.getTableName();
-                    if (dbParam.getIsWholeTable()==1)
-                    {
-                        logger.info("url: "+url+" username: "+username+" password: "+password );
-                        DbHandler.getTableData(DbConstant.MYSQL,tablename,dbParam);
-                        logger.info("data processing and uploading");
-                    }
+
+                try {
+                    Thread.sleep(6000);
+                    System.out.println("database test");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                break;
+                return "num"+webRequest.getTaskId();
+//                Parameter<RelationParam> param = JSON.parseObject(webRequest.parameter, new TypeReference<Parameter<RelationParam>>(){});
+//                RelationParam dbParam = (RelationParam) param.getParam();
+//                String url = dbParam.getDbName();
+//                String username = dbParam.getUsername();
+//                String password = dbParam.getPassword();
+//                if (dbParam.getIsWholeDb()==0){
+//                    DbHandler.getAllDbData(DbConstant.MYSQL, dbParam);
+//                }else{
+//                    String tablename = dbParam.getTableName();
+//                    if (dbParam.getIsWholeTable()==1)
+//                    {
+//                        logger.info("url: "+url+" username: "+username+" password: "+password );
+//                        DbHandler.getTableData(DbConstant.MYSQL,tablename,dbParam);
+//                        logger.info("data processing and uploading");
+//                    }
+//                }
+//                break;
             case FILELIST_VIEW:
                 AsyncTaskUtils.INSTANCE.dispatchNormalTask(new FileListViewTask());
                 logger.info("\nTurn to FileList View task executor");
@@ -93,8 +101,13 @@ public class ClientAsyncServiceImpl implements ClientService.AsyncIface {
                 logger.info("\nTurn to Get Live Clients task executor");
                 break;
             default:
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 logger.error("Unrecognized Request type");
         }
-
+        return "null";
     }
 }

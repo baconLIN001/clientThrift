@@ -73,6 +73,7 @@ public class asyncDbApp {
         transport.close();
     }
 
+    static int id = 0;
     public static void main_asy() throws Exception {
         try {
             TAsyncClientManager clientManager = new TAsyncClientManager();
@@ -106,11 +107,15 @@ public class asyncDbApp {
             String parameterJson = JSON.toJSONString(parameter);
             System.out.println(parameterJson);
             WebRequest request = new WebRequest().setRequestType(RequestType.DATABASE_DATA_UPLOAD)
-                    .setTaskId(5)
+                    .setTaskId(id++)
                     .setParameter(parameterJson);
 
-
+            ClientService.AsyncClient.receive_call receive_call = null;
             asyncClient.receive(request, callBack);
+//            System.out.println(receive_call.getResult().toString());
+            for (int i = 0; i<50000;i++){
+                Thread.sleep(1);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,8 +125,18 @@ public class asyncDbApp {
     public static void main(String[] args) throws Exception {
         for (int i =1; i<30;i++)
         {
-            main_asy();
-            System.out.println(i);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        main_asy();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
             Thread.sleep(1000);
         }
     }

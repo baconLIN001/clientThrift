@@ -7,6 +7,8 @@ import org.apache.thrift.TProcessorFactory;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.server.THsHaServer;
 import org.apache.thrift.server.TServer;
+import org.apache.thrift.server.TThreadPoolServer;
+import org.apache.thrift.server.TThreadedSelectorServer;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TNonblockingServerSocket;
 import org.apache.thrift.transport.TTransportException;
@@ -20,14 +22,14 @@ public class Server {
     private void start(){
         try {
             TNonblockingServerSocket socket = new TNonblockingServerSocket(PORT);
-            final ClientService.AsyncProcessor processor = new ClientService.AsyncProcessor(new ClientAsyncServiceImpl());
-            THsHaServer.Args args = new THsHaServer.Args(socket);
+            final ClientService.Processor processor = new ClientService.Processor(new ClientAsyncServiceImpl());
+            TThreadedSelectorServer.Args args = new TThreadedSelectorServer.Args(socket);
             // 高效率的、密集的二进制编码格式进行数据传输
             // 使用非阻塞方式，按块的大小进行传输，类似于 Java 中的 NIO
             args.protocolFactory(new TCompactProtocol.Factory());
             args.transportFactory(new TFramedTransport.Factory());
             args.processorFactory(new TProcessorFactory(processor));
-            TServer server = new THsHaServer(args);
+            TServer server = new TThreadedSelectorServer(args);
             server.serve();
             System.out.println("#服务启动-使用:非阻塞&高效二进制编码");
         } catch (TTransportException e) {

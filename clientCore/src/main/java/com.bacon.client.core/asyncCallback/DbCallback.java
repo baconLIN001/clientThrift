@@ -13,6 +13,12 @@ public class DbCallback implements AsyncMethodCallback<ClientService.AsyncClient
     @Override
     public void onComplete(ClientService.AsyncClient.receive_call receive_call) {
         System.out.println("complete");
+        try {
+            System.out.println("AsynCall result =:" + receive_call.getResult().toString());
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+
 //        try {
 //            System.out.println(receive_call.getResult().toString());
 //        } catch (RequestException e) {

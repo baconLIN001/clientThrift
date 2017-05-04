@@ -103,6 +103,7 @@ public class ClientServiceImpl implements ClientService.Iface{
                             try {
                                 //阻塞，等待异步任务执行完毕-获取异步任务的返回值
                                 completeReturnBack = get();
+                                completeReturnBack.setType("file");
 
                                 logger.info("TaskId: " + completeReturnBack.getTaskId() + "    Info: " + completeReturnBack.getReturnInfo());
                                 //http发送task运行完成消息，异步
@@ -163,6 +164,7 @@ public class ClientServiceImpl implements ClientService.Iface{
                                 Integer taskId = completeReturnBackList.get(0).getTaskId();
                                 CompleteReturnBack completeReturnBackFinal = new CompleteReturnBack(taskId);
                                 completeReturnBackFinal.setFileUploadCode(FileUploadCode.UPLOAD_SUCCESS);
+                                completeReturnBackFinal.setType("file");
 
                                 for (CompleteReturnBack completeReturnBack : completeReturnBackList){
                                     logger.info("TaskId: " + completeReturnBack.getTaskId() + "   " + completeReturnBack.getPath() + "   " + completeReturnBack.getReturnInfo());
@@ -247,6 +249,7 @@ public class ClientServiceImpl implements ClientService.Iface{
                             //阻塞，等待异步任务执行完毕-获取异步任务的返回值
                             completeReturnBack = get();
                             completeReturnBack.setTaskId(taskId);
+                            completeReturnBack.setType("database");
 
                             logger.info("TaskId: " + taskId +" dbUploadCode" + completeReturnBack.getDbUploadCode()+ " Info: " + completeReturnBack.getReturnInfo());
                             //http发送task运行完成消息，异步
